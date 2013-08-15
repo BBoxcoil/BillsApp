@@ -35,11 +35,12 @@ function HomeController()
 	{
 		var that = this;
 		$.ajax({
-			url: "/home",
+			url: "/logout",
 			type: "POST",
 			data: {logout : true},
 			success: function(data){
 	 			that.showLockedAlert('You are now logged out.<br>Redirecting you back to the homepage.');
+				setTimeout(function(){window.location.href = '/';}, 3000);
 			},
 			error: function(jqXHR){
 				console.log(jqXHR.responseText+' :: '+jqXHR.statusText);

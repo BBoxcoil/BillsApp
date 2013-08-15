@@ -14,7 +14,7 @@ module.exports = exports = function (db) {
 				AM.autoLogin(req.cookies.user, req.cookies.pass, function(o){
 					if (o != null){
 						req.session.user = o;
-						res.redirect('/home');
+						res.redirect('/');
 					}	else{
 						res.render('users/login', { title: 'Hello - Please Login To Your Account' });
 					}
@@ -32,6 +32,7 @@ module.exports = exports = function (db) {
 						res.cookie('pass', o.pass, { maxAge: 900000 });
 					}
 					res.send(o, 200);
+					//res.redirect('/');
 				}
 			});
 	    },
@@ -55,9 +56,23 @@ module.exports = exports = function (db) {
 					res.send('ok', 200);
 				}
 			});
+	   },
+
+       logout : function(req, res){
+	      //req.session = null;
+		  res.clearCookie('user');
+	      req.session.destroy();
+		  res.redirect('/');
+	   },
+	   logout_onpost : function(req, res){
+	      //req.session = null;
+		  if(req.param('logout') === 'true'){
+			  res.clearCookie('user');
+			  req.session.destroy();
+			  res.send('ok', 200);
+		  }
 	   }
-
-
+  
   
   }
   

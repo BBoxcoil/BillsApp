@@ -7,6 +7,8 @@ html(lang='he',ng-app='myModule',dir='rtl')
     link(rel='stylesheet', href='/app/css/bootstrap-rtl.css')
     link(rel='stylesheet', href='/app/lib/angular-ui-0.4.0/build/angular-ui.css')
     link(rel='stylesheet', href='/app/lib/fullcalendar-1.6.1/fullcalendar/fullcalendar.css')
+    script(src='/users/vendor/bootstrap-modal.js')
+    script(src='/users/vendor/bootstrap-transition.js')
     //link(rel='stylesheet', href='/app/lib/fullcalendar-1.6.1/fullcalendar/bootstrap-fullcalendar.css')	
     script(src='/app/lib/fullcalendar-1.6.1/jquery/jquery-1.9.1.min.js')
     script(src='/app/lib/fullcalendar-1.6.1/jquery/jquery-ui-1.10.2.custom.min.js')
@@ -16,9 +18,15 @@ html(lang='he',ng-app='myModule',dir='rtl')
     script(src='/app/lib/angular-ui-0.4.0/common/module.js')
     script(src='/app/lib/fullcalendar-1.6.1/fullcalendar/fullcalendar.js')
     script(src='/app/lib/angular-ui-0.4.0/modules/directives/calendar/calendar.js')
-
+    script(src='/users/vendor/bootstrap-modal.js')
+    script(src='/users/vendor/bootstrap-transition.js')
+    script(src='/users/js/controllers/homeController.js')
+    script(src='/users/js/views/home.js')
   body
     block content
+      button(type="button")#btn-logout.btn.btn-primary
+        i.icon-user.icon-white
+        | Logout
       div#directives-calendar(ng-controller='CalendarCtrl')
         div.well
           div.row
@@ -30,4 +38,5 @@ html(lang='he',ng-app='myModule',dir='rtl')
                         {{e.title}}  
                         a.btn.btn-danger(style='float: left; margin-top: -5px;',ng-click='remove($index)') x
             div#calendar.ui-widget.span10.calendar(ng-model='eventSources',calendar='mycalendar',config='uiConfig.calendar',ui-calendar='uiConfig.calendar')
+      include users/modals/alert
             

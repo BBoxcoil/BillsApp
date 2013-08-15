@@ -71,26 +71,30 @@ if ('development' == app.get('env')) {
 
 var files = require('./routes/files')(db.connection.db);
 var users = require('./users/userapi')(db.connection.db);
+var IsLoggedIn = require('./users/modules/IsLoggedIn');
 
-app.get('/pc', routes.index);
-app.get('/list', front.showall);
+app.get('/pc', IsLoggedIn,routes.index);
+app.get('/list', IsLoggedIn,front.showall);
 app.get('/api/new', front.newitem);
 app.post('/api/insert', files.showUploadFiles,api.insert);
-app.get('/api/list', api.showall);
-app.get('/api/calendarlist', api.calendar);
-app.get('/api/files', files.getFiles, files.filesList);
-app.post('/api/files',files.showUploadFiles, files.getFiles, files.filesList);
-app.get('/download/:fileId',files.download);
-app.get('/remove/:fileId',files.remove, files.getFiles, files.filesList);
-app.get('/api/del/:token',api.delitem,files.remove,files.getFiles, files.filesList);
-app.post('/api/upd',api.upditem);
+app.get('/api/list', IsLoggedIn,api.showall);
+app.get('/api/calendarlist',IsLoggedIn, api.calendar);
+app.get('/api/files', IsLoggedIn,files.getFiles, files.filesList);
+app.post('/api/files',IsLoggedIn,files.showUploadFiles, files.getFiles, files.filesList);
+app.get('/download/:fileId',IsLoggedIn,files.download);
+app.get('/remove/:fileId',IsLoggedIn,files.remove, files.getFiles, files.filesList);
+app.get('/api/del/:token',IsLoggedIn,api.delitem,files.remove,files.getFiles, files.filesList);
+app.post('/api/upd',IsLoggedIn,api.upditem);
 
 app.get('/login',users.login); 
 app.post('/api/login',users.login_onpost);
 app.get('/signup',users.signup); 
 app.post('/api/signup',users.signup_onpost);
 
-app.get('/', api.mobile);
+app.get('/', IsLoggedIn ,api.mobile);
+//app.get('/',IsLoggedIn ,routes.index);
+app.get('/logout', IsLoggedIn ,users.logout);
+app.post('/logout', IsLoggedIn ,users.logout_onpost);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
