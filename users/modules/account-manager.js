@@ -98,6 +98,7 @@ module.exports = exports = function (db) {
 				if (o){
 					callback('username-taken');
 				}	else{
+				    
 					accounts.findOne({email:newData.email}, function(e, o) {
 						if (o){
 							callback('email-taken');
@@ -110,6 +111,7 @@ module.exports = exports = function (db) {
 							});
 						}
 					});
+					
 				}
 			});
 		},

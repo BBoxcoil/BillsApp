@@ -28,8 +28,10 @@ function AccountValidator(){
 	
 	this.validateEmail = function(e)
 	{
-		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(e);
+	   
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(e);
+		
 	}
 	
 	this.showErrors = function(a)
@@ -52,7 +54,7 @@ AccountValidator.prototype.showInvalidEmail = function()
 AccountValidator.prototype.showInvalidUserName = function()
 {
 	this.controlGroups[2].addClass('error');
-	this.showErrors(['That username is already in use.']);
+	this.showErrors(['That phone is already in use.']);
 }
 
 AccountValidator.prototype.validateForm = function()
@@ -67,7 +69,7 @@ AccountValidator.prototype.validateForm = function()
 	}
 	if (this.validateName(this.formFields[2].val()) == false) {
 		this.controlGroups[2].addClass('error');
-		e.push('Please Choose A Username');
+		e.push('Please Enter Your Phone');
 	}
 	if (this.validatePassword(this.formFields[3].val()) == false) {
 		this.controlGroups[3].addClass('error');
