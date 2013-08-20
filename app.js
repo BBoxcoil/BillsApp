@@ -71,7 +71,7 @@ if ('development' == app.get('env')) {
 
 var files = require('./routes/files')(db.connection.db);
 var users = require('./users/userapi')(db.connection.db);
-var IsLoggedIn = require('./users/modules/IsloggedIn');
+var IsLoggedIn = require('./users/modules/Isloggedin');
 
 app.get('/pc', IsLoggedIn,routes.index);
 app.get('/list', IsLoggedIn,front.showall);
