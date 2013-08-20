@@ -13,7 +13,7 @@ Ext.define('BillsApp.view.Login', {
         items: [
             {
                 docked: 'top',
-                xtype: 'toolbar',
+                xtype: 'toolbar'
                 //cls: 'jogToolbar'
             }
         ]

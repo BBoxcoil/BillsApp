@@ -15,8 +15,7 @@ Ext.define('Ext.ux.Menu',{
         defaultType: 'button',
         defaults: {
             textAlign: 'right'
-        },
-        
+        }        
     },
     
     setParent: function(parent) {

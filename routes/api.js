@@ -166,6 +166,6 @@ exports.upditem = function(req, res, next){
 };
 
 exports.mobile = function(req, res, next){
-    //res.redirect('/m/index.html');
-    res.redirect('/m/build/BillsApp/package/index.html');
+    res.redirect('/m/index.html');
+    //res.redirect('/m/build/BillsApp/package/index.html');
 };

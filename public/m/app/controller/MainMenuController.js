@@ -10,7 +10,7 @@ Ext.define("BillsApp.controller.MainMenuController", {
     
     config: {
         refs: {
-            slideNav:                   'BillsApp',
+            slideNav:                   'BillsApp'
            // moviePosterListContainer:   'BillsApp container[title="Item 8"]'
         },
 

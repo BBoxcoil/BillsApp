@@ -8,6 +8,9 @@ Ext.define('BillsApp.view.MainMenuViewer', {
         'Ext.Toolbar',
         'Ext.event.publisher.Dom',
         'Ext.TitleBar',
+        'BillsApp.view.Bills',
+        'BillsApp.view.Contact',
+        'BillsApp.view.Home'
     ],
     
     config: {
@@ -82,8 +85,8 @@ Ext.define('BillsApp.view.MainMenuViewer', {
                     title: {
                         title: 'תפריט',
                         centered: true,
-                        width: 200,                       
-                    },
+                        width: 200                       
+                    }
                 
                 /**
                  *  Here's an example of how to add a different type of

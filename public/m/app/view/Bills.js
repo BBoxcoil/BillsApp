@@ -9,7 +9,7 @@ Ext.define('BillsApp.view.Bills', {
         'Ext.plugin.ListPaging',
         'Ext.plugin.PullRefresh',
         'Ext.field.Search',
-        'Ext.picker.Date',       
+        'Ext.picker.Date'       
     ], 
     
     config: {        
@@ -135,8 +135,10 @@ Ext.define('BillsApp.view.Bills', {
                 ]
             },
             {
-                xtype:          'list',  
+                xtype:          'list',
+                //requires:       ['Ext.ux.panel.PDF'],
                 store:          'MyStoreItems',
+                itemId:         'BillsList',
                 loadingText:    "... טוען חשבוניות ",
 	            emptyText:      '</pre><div class="list-empty-text">רשימת החשבוניות שלך ריקה</div><pre>',
                 grouped:        true,               
@@ -168,9 +170,10 @@ Ext.define('BillsApp.view.Bills', {
                     //Ext.Viewport.removeAll();
                     var me = this;
                     me.hide();
-                    console.log('http://bbxdev.eu01.aws.af.cm/download/' + record.get('file'));
+                    //console.log('http://bbxdev.eu01.aws.af.cm/download/' + record.get('file'));
                     //this.getParent().getNavigationBar().setHidden(false);    
-                    var PdfReaderContainer = this.up().push( {
+                        var billsPanel = Ext.ComponentQuery.query('#BillsList')[0];
+                        var PdfReaderContainer = billsPanel.push( {
                          fullscreen: true,
                          items: [
                          {            
@@ -182,9 +185,9 @@ Ext.define('BillsApp.view.Bills', {
                             hideOnMaskTap:      true,
                             //floating:           true,
                             loadingMessage:     'החשבונית נטענת',
-                            //src:                '/download/' + record.get('file'),
+                            src:                '/download/' + record.get('file'),
                             //src :               './pdf/abc.pdf',
-                            src:                'http://bbxdev.eu01.aws.af.cm/download/' + record.get('file'),
+                            //src:                'http://bbxdev.eu01.aws.af.cm/download/' + record.get('file'),
                             
                             //src:                window.location.hostname + '/download/' + record.get('file'), 
                             styleHtmlContent:   true,
@@ -216,7 +219,8 @@ Ext.define('BillsApp.view.Bills', {
                                                 
                                                 fn: function () {
                                                     PdfReaderContainer.hide();
-                                                    me.show();    
+                                                    me.show();
+                                                    
                                                         //Ext.Viewport.removeAll();
                                                         //Ext.Viewport.add(Ext.create('BillsApp.view.Main'));
                                                         //Ext.Viewport.add(Ext.create('BillsApp.view.MainMenuViewer'));
@@ -235,7 +239,8 @@ Ext.define('BillsApp.view.Bills', {
                                                 
                                                 fn: function () {
                                                         PdfReaderContainer.hide();
-                                                        me.show();  
+                                                        me.show(); 
+                                                        billsPanel.animateActiveItem(0, {type: 'filp'});
                                                     }
                                                 }
                                             ]
@@ -253,7 +258,7 @@ Ext.define('BillsApp.view.Bills', {
                     Ext.Viewport.add(PdfReaderContainer);*/
                 }
             }
-        ],
+        ]
         /*pop: function() {
             this.getNavigationBar().setHidden(true);
         }*/
