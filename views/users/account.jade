@@ -1,4 +1,4 @@
-
+﻿
 // preset form values if we receive a userdata object //
 - user = typeof(udata) != 'undefined' ? udata : { }
 // store the userId on the client side in a hidden input field //
@@ -11,7 +11,7 @@ input(type='hidden', value= user._id)#userId
 		hr
 		fieldset
 			#name-cg.control-group
-				label.control-label(for='name-tf') Name
+				label.control-label(for='name-tf') שם
 				.controls
 					input#name-tf.input-xsmall(type='text', name='name', value= user.name)
 			#email-cg.control-group
@@ -27,11 +27,11 @@ input(type='hidden', value= user._id)#userId
 			hr
 			p#sub2.subheading
 			#user-cg.control-group
-				label.control-label(for='user-tf') Phone
+				label.control-label(for='user-tf') מספר טלפון
 				.controls
 					input#user-tf.input-xsmall.disabled(type='text', name='user', value= user.user)
 			#pass-cg.control-group
-				label.control-label(for='pass-tf') Password
+				label.control-label(for='pass-tf') סיסמה
 				.controls
 					input#pass-tf.input-xsmall(type='password', name='pass', value='')
 			.form-actions
